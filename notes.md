@@ -19,7 +19,7 @@
     git push // 提交更新远程 github 仓库
 
 - add SwaggerUi & REST-auth 分支 - REST / GraphQL / Microservice / WebSockets 可选
-  nest g resource auth --no-spec // --no-spec 不含测试文件
+  nest g resource auth --no-spec // 不含测试文件
 
 
 
