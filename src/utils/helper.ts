@@ -1,5 +1,9 @@
 import * as bcrypt from 'bcrypt';
 
+import { JwtService } from '@nestjs/jwt/dist';
+
+const jwt = new JwtService();
+
 export async function HashPassword(password: string) {
   const saltOrRounds = 10;
 
@@ -14,3 +18,16 @@ export async function comparePasswords(args: {
 }) {
   return await bcrypt.compare(args.password, args.hashPassword);
 }
+
+export async function signToken(args: { id: string; email: string }) {
+  const payload = args;
+  const jwtSecret = process.env.JWT_SECRET;
+  console.log('jwtSecret: ', jwtSecret);
+
+  return jwt.signAsync(payload, { secret: jwtSecret });
+}
+
+// {
+//   "email": "b@b.com",
+//   "password": "bbb"
+// }
