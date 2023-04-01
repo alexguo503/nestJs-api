@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { Request, Response } from 'express';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto/auth.dto';
 import { AuthEntity } from './entities/auth.entity';
@@ -17,13 +18,17 @@ export class AuthController {
 
   @ApiCreatedResponse({ status: 201, type: AuthEntity })
   @Post('signin')
-  signin(@Body() dto: AuthDto) {
-    return this.authService.signin(dto);
+  signin(
+    @Body() dto: AuthDto,
+    @Req() request: Request,
+    @Res() response: Response,
+  ) {
+    return this.authService.signin(dto, request, response);
   }
 
   @ApiOkResponse()
   @Get('signout')
-  signout() {
-    return this.authService.signout();
+  signout(@Req() request: Request, @Res() response: Response) {
+    return this.authService.signout(request, response);
   }
 }

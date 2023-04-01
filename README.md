@@ -10,7 +10,11 @@
   git remote add origin https://github.com/alexguo503/nestJs-api.git
   git push -u origin main
 
+- password 加密 by bcryptJs
 
+- jwt token 注册登录 by passport-jwt
+
+- 
 
 ## 注意事项:
 

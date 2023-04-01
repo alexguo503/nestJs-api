@@ -5,8 +5,12 @@ import { DocumentBuilder } from '@nestjs/swagger';
 import { SwaggerModule } from '@nestjs/swagger/dist';
 import { ValidationPipe } from '@nestjs/common';
 
+import * as cookieParser from 'cookie-parser';
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.use(cookieParser());
 
   app.useGlobalPipes(
     new ValidationPipe({
