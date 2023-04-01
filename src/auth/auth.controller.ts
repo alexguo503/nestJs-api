@@ -15,10 +15,10 @@ export class AuthController {
     return this.authService.signup(dto);
   }
 
-  @ApiCreatedResponse()
+  @ApiCreatedResponse({ status: 201, type: AuthEntity })
   @Post('signin')
-  signin() {
-    return this.authService.signin();
+  signin(@Body() dto: AuthDto) {
+    return this.authService.signin(dto);
   }
 
   @ApiOkResponse()
