@@ -21,7 +21,10 @@
 - add SwaggerUi & REST-auth 分支 - REST / GraphQL / Microservice / WebSockets 可选
   1. nest g resource auth --no-spec // 不含测试文件
   2. auth dto
-  3. 
+
+- password 加密 by bcryptJs
+
+- jwt token 注册登录 by passport-jwt
 
 
 
