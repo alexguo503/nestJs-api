@@ -5,7 +5,7 @@ import { AuthDto } from './dto/auth.dto';
 
 import { comparePasswords, HashPassword, signToken } from '../utils/helper';
 
-import { PrismaService } from 'prisma/prisma.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt/dist';
 import { ForbiddenException } from '@nestjs/common/exceptions';
 import { Request, Response } from 'express';
@@ -80,5 +80,9 @@ export class AuthService {
     res.clearCookie('token');
 
     return res.send({ message: 'Logged out successfully' });
+  }
+
+  async refreshTokens() {
+    return 'refreshTokens';
   }
 }

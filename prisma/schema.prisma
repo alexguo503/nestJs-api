@@ -18,3 +18,15 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model User1 {
+  id             Int     @id @default(autoincrement())
+  email          String  @unique
+  hashedPassword String
+  hashRt         String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}

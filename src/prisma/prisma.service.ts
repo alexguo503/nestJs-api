@@ -1,10 +1,24 @@
 // prisma/prisma.service.ts
 
-import { INestApplication, Injectable, OnModuleInit } from '@nestjs/common';
+import {
+  INestApplication,
+  Injectable,
+  OnModuleDestroy,
+  OnModuleInit,
+} from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 
 @Injectable()
-export class PrismaService extends PrismaClient implements OnModuleInit {
+export class PrismaService
+  extends PrismaClient
+  implements OnModuleInit, OnModuleDestroy
+{
+  constructor() {
+    super();
+  }
+  onModuleDestroy() {
+    throw new Error('Method not implemented.');
+  }
   async onModuleInit() {
     await this.$connect();
   }
